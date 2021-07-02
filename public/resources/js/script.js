@@ -20,7 +20,7 @@ weatherForm.addEventListener('submit', (e) => {
   locationPara.setAttribute('class', '')
   forecastPara.textContent = ''
   locationPara.textContent = 'Loading...'
-  fetch(`http://localhost:3000/weather?search=${searchValue}`).then((response) => {
+  fetch(`/weather?search=${searchValue}`).then((response) => {
     response.json().then((data) => {
       if (data.error) {
         locationPara.setAttribute('class', 'error')

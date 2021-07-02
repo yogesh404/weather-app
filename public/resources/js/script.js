@@ -13,11 +13,13 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const locationPara = document.querySelector('#location')
 const forecastPara = document.querySelector('#forecast')
+const weatherIcon = document.getElementById('weather-icon')
 
 weatherForm.addEventListener('submit', (e) => {
   e.preventDefault()
   const searchValue = search.value
   locationPara.setAttribute('class', '')
+  weatherIcon.style.display = 'none'
   forecastPara.textContent = ''
   locationPara.textContent = 'Loading...'
   fetch(`/weather?search=${searchValue}`).then((response) => {
@@ -27,8 +29,10 @@ weatherForm.addEventListener('submit', (e) => {
         locationPara.textContent = 'Error'
         return forecastPara.textContent = data.error; 
       }
-      locationPara.textContent = data.location;
-      forecastPara.textContent = data.forecastString;
+      weatherIcon.src = data.weatherIcon
+      weatherIcon.style.display = 'inline-block'
+      locationPara.textContent = data.location
+      forecastPara.textContent = data.forecastString
     })
   })
 })

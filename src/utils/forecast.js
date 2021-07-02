@@ -8,7 +8,14 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback('Error '+body.error.code+'. '+body.error.info)
         } else {
-            callback(undefined, { description: body.current.weather_descriptions[0], temperature:body.current.temperature, feelsLike: body.current.feelslike, forecastString: `${body.current.weather_descriptions[0]}. It is currently ${body.current.temperature} degrees outside. It feels like ${body.current.feelslike} degrees.`})
+            callback(undefined, { 
+                description: body.current.weather_descriptions[0],
+                temperature:body.current.temperature,
+                feelsLike: body.current.feelslike,
+                humidity: body.current.humidity,
+                weatherIcon: body.current.weather_icons[0],
+                forecastString: `${body.current.weather_descriptions[0]}. It is currently ${body.current.temperature} degrees. It feels like ${body.current.feelslike} degrees. It is ${body.current.humidity}% humid.`
+            })
         }
     })
 }

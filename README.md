@@ -1,4 +1,4 @@
 
 # Weather
 
-Live site is hosted on Heroku. [Take me there!](https://yogay-weather-app.herokuapp.com/)
+Live site hosted on [Heroku](https://yogay-weather-app.herokuapp.com/).
